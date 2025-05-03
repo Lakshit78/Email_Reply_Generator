@@ -27,7 +27,7 @@ function getEmailContent() {
 
   for(const selector of selectors){
     const emailContent = document.querySelector(selector);
-    if(toolbar){
+    if(emailContent){
       return emailContent.innerText.trim();
     }
     return '';
@@ -80,11 +80,28 @@ function injectButton() {
       console.error(error);
     } finally {
       button.innerHTML = 'AI Reply';
-      button.disabled = false;
+      button.disabled = false;  
     }
   });
 
-  toolbar.insertBefore(button, toolbar.firstChild);
+  const sendButtonContainer = toolbar.querySelector('.T-I.J-J5-Ji.aoO');
+  
+  if (sendButtonContainer) {
+    console.log("Send button container found, inserting AI button");
+    // Get the parent of the send button to insert our button there
+    const buttonContainer = sendButtonContainer.parentElement;
+    if (buttonContainer) {
+      // Insert our button as the first element in the container
+      buttonContainer.insertBefore(button, buttonContainer.firstChild);
+    } else {
+      // Fallback to inserting before the send button itself
+      toolbar.insertBefore(button, sendButtonContainer);
+    }
+  } else {
+    console.log("Send button not found, adding to toolbar");
+    // Fallback: insert at the beginning of the toolbar
+    toolbar.insertBefore(button, toolbar.firstChild);
+  }
 }
 
 // Callback function to execute when mutations are observed
