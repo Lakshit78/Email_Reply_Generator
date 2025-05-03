@@ -1,0 +1,22 @@
+{
+  "name": "Email AI Reply",
+  "description": "This extension allows user to generate AI replies to an email on a single click.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "Email AI Reply",
+    "default_icon": "replyImage.png"
+  },
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "*://mail.google.com/*",
+    "http://localhost:8080/api/email/*"
+  ],
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["*://mail.google.com/*"],
+      "run_at": "document_end"
+    }
+  ]
+}
