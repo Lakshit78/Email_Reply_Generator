@@ -105,6 +105,7 @@ The extension will now:
 * Allow tone selection via a dropdown
 
 ## 📸 Demo
+![image](https://github.com/user-attachments/assets/7bdc6aa8-dd23-4a64-8d19-61b7a8b03296)
 
 
 ## 📬 API Endpoint
